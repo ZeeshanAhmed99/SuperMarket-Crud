@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using WebApplication2.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SuperMarket Management </title>
+        <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controll="Home" asp-action="Index">SuperMarket</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" area-expended="false" area-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class = "navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Categories" asp-action="Index">Categories</a>
+                        </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="pd-3">
+            @RenderSection("title")
+        </div>
+        <div class="container">
+            @RenderBody()
+        </div>
+        @await RenderSectionAsync("Script",required: false)
+    </body>
+</html>

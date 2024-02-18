@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using WebApplication2.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<Category>
+
+	@section title{
+	<h3>Categories</h3>
+	}
+<br />
+<ul>
+	@if(Model!=null && Model.Count() > 0)
+	{
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var category in Model)
+				{
+					<tr>
+						<td>@category.Name</td>
+						<td>@category.Description</td>
+						<td><a class="btn btn-link" asp-controller="categories" asp-action="edit" asp-route-id="@category.Id">Edit</a></td>
+						<td><a class="btn btn-link" asp-action="delete" asp-route-id ="@category.Id" onclick="confirmDelete()">Delete</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+</ul>
+<br/>
+<a class="btn btn-primary" asp-controller="categories" asp-action="add">Add</a>
+@section Script{
+	<script>
+		function confirmDelete(){
+			return confirm("Are you sure you want to delete this category?");
+		}
+
+	</script>
+}
